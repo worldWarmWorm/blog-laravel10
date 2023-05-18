@@ -1,0 +1,4 @@
+sail shell - into app container console (exit; for quite)
+sail share - share project url
+sail artisan tinker - open tinker console
+sail artisan make:provider ExampleServiceProvider

@@ -1,0 +1,1 @@
+sail artisan migrate - execute migrations
