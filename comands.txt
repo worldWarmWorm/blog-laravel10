@@ -2,3 +2,8 @@ sail shell - into app container console (exit; for quite)
 sail share - share project url
 sail artisan tinker - open tinker console
 sail artisan make:provider ExampleServiceProvider
+sail artisan make:controller ExampleController
+sail artisan route:list
+sail artisan route:cache(or clear)
+sail artisan config:cache(or clear)
+sail artisan down - maintenance mode is on
