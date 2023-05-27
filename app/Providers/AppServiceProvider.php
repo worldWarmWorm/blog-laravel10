@@ -2,23 +2,21 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
-    {
-        //
-    }
+	public function register(): void
+	{
+		//
+	}
 
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
-    {
-        //
-    }
+	public function boot(): void
+	{
+		View::share('date', date('Y'));
+		View::composer('blog*', static function (\Illuminate\View\View $view) {
+			$view->with('balance', 4000);
+		});
+	}
 }

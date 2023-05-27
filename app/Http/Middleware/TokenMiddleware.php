@@ -8,13 +8,16 @@ use Symfony\Component\HttpFoundation\Response;
 
 class TokenMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next): Response
-    {
-        return $next($request);
-    }
+	public function handle(
+		Request $request,
+		Closure $next,
+		string $token,
+		string $foo
+	): Response {
+		if ($request->input('token') === $token) {
+			return $next($request);
+		}
+
+		abort(403);
+	}
 }

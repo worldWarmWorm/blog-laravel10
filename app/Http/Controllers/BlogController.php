@@ -2,18 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class BlogController extends Controller
 {
-	public function index(): string
+	public function index(): View
 	{
-		return "Страница блога";
+		$post = (object)[
+			'id' => 123,
+			'title' => 'Заголовок поста',
+			'content' => 'Текст поста <strong>текущего дня</strong>'
+		];
+
+		$posts = array_fill(0, 10, $post);
+
+		return view('blog.index', compact('posts'));
 	}
 
 	public function show($postId): string
 	{
-		return "Станица поста $postId";
+		$post = (object)[
+			'id' => 123,
+			'title' => 'Заголовок поста',
+			'content' => 'Текст поста <strong>текущего дня</strong>'
+		];
+
+		return view('blog.show', compact('post'));
 	}
 
 	public function like($postId)

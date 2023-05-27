@@ -19,6 +19,6 @@ class ActiveMiddleware
 
 	protected function isActive(Request $request): bool
 	{
-		return true;
+		return false;
 	}
 }

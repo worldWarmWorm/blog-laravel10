@@ -2,40 +2,17 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\{
-	ActiveMiddleware,
-	Authenticate,
-	EncryptCookies,
-	PreventRequestsDuringMaintenance,
-	RedirectIfAuthenticated,
-	TrimStrings,
-	TrustProxies,
-	ValidateSignature,
-	VerifyCsrfToken
-};
-use Illuminate\Auth\Middleware\{
-	AuthenticateWithBasicAuth,
-	Authorize,
-	EnsureEmailIsVerified,
-	RequirePassword,
-};
+use App\Http\Middleware\{ActiveMiddleware, AdminMiddleware, Authenticate, EncryptCookies, PreventRequestsDuringMaintenance, RedirectIfAuthenticated, TokenMiddleware, TrimStrings, TrustProxies, ValidateSignature, VerifyCsrfToken};
+use App\Http\Controllers\TestController;
+use Illuminate\Auth\Middleware\{AuthenticateWithBasicAuth, Authorize, EnsureEmailIsVerified, RequirePassword};
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
 use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
-use Illuminate\Http\Middleware\{
-	HandleCors,
-	SetCacheHeaders
-};
-use Illuminate\Routing\Middleware\{
-	SubstituteBindings,
-	ThrottleRequests,
-};
+use Illuminate\Http\Middleware\{HandleCors, SetCacheHeaders};
+use Illuminate\Routing\Middleware\{SubstituteBindings, ThrottleRequests,};
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Illuminate\Session\Middleware\{
-	AuthenticateSession,
-	StartSession
-};
+use Illuminate\Session\Middleware\{AuthenticateSession, StartSession};
 
 class Kernel extends HttpKernel
 {
@@ -91,6 +68,8 @@ class Kernel extends HttpKernel
 		'signed' => ValidateSignature::class,
 		'throttle' => ThrottleRequests::class,
 		'verified' => EnsureEmailIsVerified::class,
-		'active' => ActiveMiddleware::class
+		'active' => ActiveMiddleware::class,
+		'admin' => AdminMiddleware::class,
+		'token' => TokenMiddleware::class,
 	];
 }
