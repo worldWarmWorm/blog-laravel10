@@ -1,9 +1,15 @@
-@extends('layouts.base')
+@extends('layouts.page')
 
-@section('page.title', "#$post->id $post->title")
+@section('page.title', $post->title)
 
-@section('content')
-	<h1>#{{ "$post->id $post->title" }}</h1>
-	<p>{!! $post->content !!}</p>
-	<a href="{{ route('blog') }}" class="btn btn-primary">Назад</a>
+@section('page.content')
+	<x-title>
+		<x-slot name="link">
+			<a href="{{ route('blog') }}">
+				{{ __('Назад') }}
+			</a>
+		</x-slot>
+		{{ __($post->title) }}
+	</x-title>
+	{!! $post->content !!}
 @endsection

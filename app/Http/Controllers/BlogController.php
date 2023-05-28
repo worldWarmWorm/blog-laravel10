@@ -19,7 +19,7 @@ class BlogController extends Controller
 		return view('blog.index', compact('posts'));
 	}
 
-	public function show($postId): string
+	public function show($postId): View
 	{
 		$post = (object)[
 			'id' => 123,

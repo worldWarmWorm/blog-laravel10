@@ -11,8 +11,8 @@ class RegisterController extends Controller
 			return view('register.index');
     }
 
-		public function store(): View
+		public function store(): string
 		{
-			return view('register.store');
+			return 'Регистрация';
 		}
 }

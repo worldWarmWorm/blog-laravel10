@@ -13,6 +13,6 @@ class LoginController extends Controller
 
 		public function store(): string
 		{
-			return view('login.store');
+			return 'Логин';
 		}
 }
