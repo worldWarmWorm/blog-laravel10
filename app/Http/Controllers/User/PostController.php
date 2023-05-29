@@ -3,17 +3,26 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 
 class PostController extends Controller
 {
-	public function index(): string
+	public function index(): View
 	{
-		return 'Страница списка постов';
+		$post = (object)[
+			'id' => 123,
+			'title' => 'Заголовок поста',
+			'content' => 'Текст поста <strong>текущего дня</strong>'
+		];
+
+		$posts = array_fill(0, 10, $post);
+
+		return view('user.posts.index', compact('posts'));
 	}
 
-	public function create(): string
+	public function create(): View
 	{
-		return 'Страница создания поста';
+		return view('user.posts.create');
 	}
 
 	public function store(): string
@@ -21,14 +30,26 @@ class PostController extends Controller
 		return 'Запрос сохранения поста';
 	}
 
-	public function show($id): string
+	public function show($post): View
 	{
-		return "Страница просмотра поста $id";
+		$post = (object)[
+			'id' => 123,
+			'title' => 'Заголовок поста',
+			'content' => 'Текст поста <strong>текущего дня</strong>'
+		];
+
+		return view('user.posts.show', compact('post'));
 	}
 
-	public function edit($id): string
+	public function edit($post): View
 	{
-		return "Страница изменения поста $id";
+		$post = (object)[
+			'id' => 123,
+			'title' => 'Заголовок поста',
+			'content' => 'Текст поста <strong>текущего дня</strong>'
+		];
+
+		return view('user.posts.edit', compact('post'));
 	}
 
 	public function update($id): string

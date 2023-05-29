@@ -7,7 +7,20 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>@yield('page.title', config('app.name'))</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css">
+	@stack('css')
 	<style>
+		*,
+		*::before,
+		*::after {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		textarea {
+			resize: none;
+		}
+
 		.required:after {
 			content: '*';
 			color: red;
@@ -25,5 +38,6 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.min.js"></script>
+@stack('js')
 </body>
 </html>
