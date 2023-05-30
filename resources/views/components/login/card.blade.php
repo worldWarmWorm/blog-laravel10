@@ -27,9 +27,11 @@
 						{{ __('Запомнить меня') }}
 					</x-checkbox>
 				</x-form-item>
-				<x-button type="submit">
-					{{ __('Войти') }}
-				</x-button>
+				<x-form-item>
+					<x-button type="submit">
+						{{ __('Вход') }}
+					</x-button>
+				</x-form-item>
 			</div>
 		</x-form>
 	</x-card-body>

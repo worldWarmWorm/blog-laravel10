@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class LoginController extends Controller
@@ -11,8 +12,18 @@ class LoginController extends Controller
 			return view('login.index');
     }
 
-		public function store(): string
+		public function store(Request $request): string
 		{
+			$email = $request->input('email');
+			$password = $request->input('password');
+			$agreement = $request->boolean('agreement');
+
+			dd(
+				$email,
+				$password,
+				$agreement
+			);
+
 			return 'Логин';
 		}
 }

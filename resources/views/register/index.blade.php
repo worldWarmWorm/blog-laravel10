@@ -20,28 +20,30 @@
 				<div class="row">
 					<x-form-item>
 						<x-label required>{{ __('Имя') }}</x-label>
-						<x-input name="name" autofocus/>
+						<x-input name="name" required autofocus/>
 					</x-form-item>
 					<x-form-item>
 						<x-label required>{{ __('E-mail') }}</x-label>
-						<x-input type="email" name="email"/>
+						<x-input type="email" name="email" required />
 					</x-form-item>
 					<x-form-item>
 						<x-label required>{{ __('Пароль') }}</x-label>
-						<x-input name="password" type="password"/>
+						<x-input name="password" type="password" required />
 					</x-form-item>
 					<x-form-item>
 						<x-label required>{{ __('Пароль ещё раз') }}</x-label>
-						<x-input name="password" type="password_confirmation"/>
+						<x-input name="password_confirmation" type="password" required />
 					</x-form-item>
 					<x-form-item>
 						<x-checkbox name="agreement">
 							{{ __('Я согласен на обработку пользовательских данных') }}
 						</x-checkbox>
 					</x-form-item>
-					<x-button type="submit">
-						{{ __('Войти') }}
-					</x-button>
+					<x-form-item>
+						<x-button type="submit">
+							{{ __('Регистрация') }}
+						</x-button>
+					</x-form-item>
 				</div>
 			</x-form>
 		</x-card-body>
