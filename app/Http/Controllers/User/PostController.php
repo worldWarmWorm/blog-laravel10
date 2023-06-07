@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class PostController extends Controller
@@ -25,8 +26,16 @@ class PostController extends Controller
 		return view('user.posts.create');
 	}
 
-	public function store(): string
+	public function store(Request $request)
 	{
+		$postTitle = $request->input('title');
+		$postContent = $request->input('content');
+
+		dd(
+			$postTitle,
+			$postContent
+		);
+
 		return 'Запрос сохранения поста';
 	}
 
@@ -52,9 +61,17 @@ class PostController extends Controller
 		return view('user.posts.edit', compact('post'));
 	}
 
-	public function update($id): string
+	public function update(Request $request)
 	{
-		return "Запрос изменения поста $id";
+		$postTitle = $request->input('title');
+		$postContent = $request->input('content');
+
+		dd(
+			$postTitle,
+			$postContent
+		);
+
+		return "Запрос изменения поста";
 	}
 
 	public function delete($id): string
