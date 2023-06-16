@@ -6,6 +6,9 @@
 	<x-title>
 		{{ __('Список постов') }}
 	</x-title>
+
+	@include('blog.filter')
+
 	<div>
 		@if(empty($posts))
 			{{ __('Нет постов') }}

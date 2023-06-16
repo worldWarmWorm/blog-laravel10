@@ -8,6 +8,9 @@
 		@method($method)
 	@endunless
 
-	@csrf
+	@unless($method === 'GET')
+		@csrf
+	@endunless
+
 	{{ $slot }}
 </form>

@@ -13,7 +13,7 @@
 		</x-slot>
 	</x-title>
 	<div>
-		@if(empty($posts))
+		@if(!($posts))
 			{{ __('Нет постов') }}
 		@else
 			@foreach($posts as $post)
