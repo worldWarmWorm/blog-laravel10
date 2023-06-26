@@ -8,3 +8,13 @@ if (! function_exists('activeLink')) {
 		return Route::is($link) ? $cssClass : '';
 	}
 }
+
+if (! function_exists('alert')) {
+	function alert(string $message, string $type = 'success'): void
+	{
+		session([
+			'alert' => $message,
+			'type' => $type
+		]);
+	}
+}

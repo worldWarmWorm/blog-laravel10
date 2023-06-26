@@ -14,16 +14,13 @@ class LoginController extends Controller
 
 		public function store(Request $request): string
 		{
-			$email = $request->input('email');
-			$password = $request->input('password');
-			$agreement = $request->boolean('agreement');
 
-			dd(
-				$email,
-				$password,
-				$agreement
-			);
+			alert(__('Добро пожаловать!'));
 
-			return 'Логин';
+//			if (true) {
+//				return redirect()->back()->withInput();
+//			}
+
+			return redirect()->route('user');
 		}
 }

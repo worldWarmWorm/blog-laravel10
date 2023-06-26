@@ -31,12 +31,9 @@ class PostController extends Controller
 		$postTitle = $request->input('title');
 		$postContent = $request->input('content');
 
-		dd(
-			$postTitle,
-			$postContent
-		);
+		alert('Пост успешно сохранён!');
 
-		return 'Запрос сохранения поста';
+		return redirect()->route('user.posts.show', 1);
 	}
 
 	public function show($post): View
@@ -61,22 +58,19 @@ class PostController extends Controller
 		return view('user.posts.edit', compact('post'));
 	}
 
-	public function update(Request $request)
+	public function update(Request $request, int $postId)
 	{
 		$postTitle = $request->input('title');
 		$postContent = $request->input('content');
 
-		dd(
-			$postTitle,
-			$postContent
-		);
+		alert(__('Пост успешно обновлён!'));
 
-		return "Запрос изменения поста";
+		return redirect()->back();
 	}
 
-	public function delete($id): string
+	public function delete(int $postId)
 	{
-		return "Запрос удаления поста $id";
+		return redirect()->route('user.posts');
 	}
 
 	public function like($id): string

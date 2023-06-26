@@ -20,19 +20,19 @@
 				<div class="row">
 					<x-form-item>
 						<x-label required>{{ __('Имя') }}</x-label>
-						<x-input name="name" required autofocus/>
+						<x-input name="name" autofocus />
 					</x-form-item>
 					<x-form-item>
 						<x-label required>{{ __('E-mail') }}</x-label>
-						<x-input type="email" name="email" required />
+						<x-input name="email" type="email" />
 					</x-form-item>
 					<x-form-item>
 						<x-label required>{{ __('Пароль') }}</x-label>
-						<x-input name="password" type="password" required />
+						<x-input name="password" type="password" />
 					</x-form-item>
 					<x-form-item>
 						<x-label required>{{ __('Пароль ещё раз') }}</x-label>
-						<x-input name="password_confirmation" type="password" required />
+						<x-input name="password_confirmation" type="password" />
 					</x-form-item>
 					<x-form-item>
 						<x-checkbox name="agreement">

@@ -16,9 +16,7 @@
 	</x-form-item>
 
 	<x-form-item>
-		<x-button type="submit">
-			{{ __('Сохранить') }}
-		</x-button>
+		{{ $slot }}
 	</x-form-item>
 </x-form>
 
