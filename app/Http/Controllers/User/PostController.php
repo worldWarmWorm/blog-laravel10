@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Post\StorePostRequest;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -27,7 +26,7 @@ class PostController extends Controller
 		return view('user.posts.create');
 	}
 
-	public function store(StorePostRequest $request)
+	public function store(Request $request)
 	{
 		$validated = validate($request->all(), [
 				'title' => ['required', 'string', 'max:100'],
