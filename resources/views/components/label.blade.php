@@ -2,7 +2,7 @@
 
 <label {{ $attributes->class([
 	($required ? 'required' : ''),
-	'mb-2'
+	'mb-1'
 ]) }}>
 	{{ $slot }}
 </label>

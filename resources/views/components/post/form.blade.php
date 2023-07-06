@@ -6,6 +6,7 @@
 			{{ __('Название поста') }}
 		</x-label>
 		<x-input name="title" autofocus />
+		<x-error name="title"/>
 	</x-form-item>
 
 	<x-form-item>
@@ -13,6 +14,7 @@
 			{{ __('Содержание поста') }}
 		</x-label>
 		<x-trix name="content" value="{{ $post->content ?? '' }}" />
+		<x-error name="content"/>
 	</x-form-item>
 
 	<x-form-item>
