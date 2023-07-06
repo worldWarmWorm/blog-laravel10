@@ -5,7 +5,7 @@
 		<x-label required>
 			{{ __('Название поста') }}
 		</x-label>
-		<x-input name="title" value="{{ $post->title ?? '' }}" autofocus />
+		<x-input name="title" autofocus />
 	</x-form-item>
 
 	<x-form-item>

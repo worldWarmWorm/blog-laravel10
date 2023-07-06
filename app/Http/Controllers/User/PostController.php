@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\StorePostRequest;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -26,10 +27,15 @@ class PostController extends Controller
 		return view('user.posts.create');
 	}
 
-	public function store(Request $request)
+	public function store(StorePostRequest $request)
 	{
-		$postTitle = $request->input('title');
-		$postContent = $request->input('content');
+		$validated = validate($request->all(), [
+				'title' => ['required', 'string', 'max:100'],
+				'content' => ['required', 'string']
+			]
+		);
+
+		dd($validated);
 
 		alert('Пост успешно сохранён!');
 
