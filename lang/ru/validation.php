@@ -143,8 +143,8 @@ return [
 	'uuid' => 'Значение поля :attribute должно быть корректным UUID.',
 
 	'custom' => [
-		'attribute-name' => [
-			'rule-name' => 'custom-message',
+		'title' => [
+			'required' => 'Поле "Название поста" не заполнено',
 		],
 	],
 

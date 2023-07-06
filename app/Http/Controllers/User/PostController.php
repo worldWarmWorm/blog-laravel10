@@ -65,8 +65,13 @@ class PostController extends Controller
 
 	public function update(Request $request, int $postId)
 	{
-		$postTitle = $request->input('title');
-		$postContent = $request->input('content');
+		$validated = validate($request->all(), [
+				'title' => ['required', 'string', 'max:100'],
+				'content' => ['required', 'string']
+			]
+		);
+
+		dd($validated);
 
 		alert(__('Пост успешно обновлён!'));
 
