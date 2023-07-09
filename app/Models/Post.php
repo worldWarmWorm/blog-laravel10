@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+/**
+ * @property bool $published
+ * @property Carbon $published_at
+ */
+final class Post extends Model
 {
 	use HasFactory;
 
@@ -18,7 +23,13 @@ class Post extends Model
 	];
 
 	protected $casts = [
+		'user_id' => 'integer',
 		'published' => 'bool',
-		'published_at' => 'datetime:Y-m-d H:i:s'
+		'published_at' => 'datetime'
 	];
+
+	public function isPublished(): bool
+	{
+		return $this->published && $this->published_at;
+	}
 }

@@ -4,7 +4,7 @@
 			#{{ $post->id }} <a href="{{ route('blog.show', $post->id) }}">{{ $post->title }}</a>
 		</h2>
 		<div class="small text-muted">
-			{{ now() }}
+			{{ $post->published_at->diffForHumans() ?? '...' }}
 		</div>
 	</x-card-body>
 </x-card>

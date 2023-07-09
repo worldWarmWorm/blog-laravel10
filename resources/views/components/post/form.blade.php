@@ -18,6 +18,20 @@
 	</x-form-item>
 
 	<x-form-item>
+		<x-label>
+			{{ __('Дата публикации') }}
+		</x-label>
+		<x-input type="date" name="published_at" placeholder="Заполните дату публикации" />
+		<x-error name="published_at"/>
+	</x-form-item>
+
+	<x-form-item>
+		<x-checkbox name="published">
+			Опубликовано
+		</x-checkbox>
+	</x-form-item>
+
+	<x-form-item>
 		{{ $slot }}
 	</x-form-item>
 </x-form>

@@ -21,14 +21,17 @@
 					<x-form-item>
 						<x-label required>{{ __('Имя') }}</x-label>
 						<x-input name="name" autofocus />
+						<x-error name="name" />
 					</x-form-item>
 					<x-form-item>
 						<x-label required>{{ __('E-mail') }}</x-label>
 						<x-input name="email" type="email" />
+						<x-error name="email" />
 					</x-form-item>
 					<x-form-item>
 						<x-label required>{{ __('Пароль') }}</x-label>
 						<x-input name="password" type="password" />
+						<x-error name="password" />
 					</x-form-item>
 					<x-form-item>
 						<x-label required>{{ __('Пароль ещё раз') }}</x-label>
@@ -38,6 +41,7 @@
 						<x-checkbox name="agreement">
 							{{ __('Я согласен на обработку пользовательских данных') }}
 						</x-checkbox>
+						<x-error name="agreement" />
 					</x-form-item>
 					<x-form-item>
 						<x-button type="submit">
