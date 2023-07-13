@@ -10,7 +10,7 @@
 	@include('blog.filter')
 
 	<div>
-		@if(empty($posts))
+		@if($posts->isEmpty())
 			{{ __('Нет постов') }}
 		@else
 			<div class="row">
@@ -22,7 +22,7 @@
 			</div>
 			<div class="row">
 				<div class="col-12">
-					{{ $posts->links() }}
+					{{ $posts?->links() }}
 				</div>
 			</div>
 		@endif

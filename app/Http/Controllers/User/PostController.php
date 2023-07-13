@@ -13,13 +13,9 @@ class PostController extends Controller
 {
 	public function index(): View
 	{
-		$post = (object)[
-			'id' => 123,
-			'title' => 'Заголовок поста',
-			'content' => 'Текст поста <strong>текущего дня</strong>'
-		];
-
-		$posts = array_fill(0, 10, $post);
+		$posts = Post::query()
+			->latest('published_at')
+			->paginate(6);
 
 		return view('user.posts.index', compact('posts'));
 	}
@@ -42,50 +38,51 @@ class PostController extends Controller
 			'user_id' => User::query()->value('id'),
 			'title' => $validated['title'],
 			'content' => $validated['content'],
-			'published_at' => new Carbon($validated['published_at'] ?? null),
+			'published_at' => (new Carbon($validated['published_at']))->format('d.m.Y H:i:s'),
 			'published' => $validated['published'] ?? false,
 		]);
 
 		alert('Пост успешно сохранён!');
 
-		return redirect()->route('user.posts.show', 1);
+		return redirect()->route('user.posts.show', $post->id);
 	}
 
-	public function show($post): View
+	public function show($postId): View
 	{
-		$post = (object)[
-			'id' => 123,
-			'title' => 'Заголовок поста',
-			'content' => 'Текст поста <strong>текущего дня</strong>'
-		];
+		$post = Post::query()->find($postId);
 
 		return view('user.posts.show', compact('post'));
 	}
 
-	public function edit($post): View
+	public function edit($postId): View
 	{
-		$post = (object)[
-			'id' => 123,
-			'title' => 'Заголовок поста',
-			'content' => 'Текст поста <strong>текущего дня</strong>'
-		];
+		$post = Post::query()->findOrFail($postId);
 
 		return view('user.posts.edit', compact('post'));
 	}
 
 	public function update(Request $request, int $postId)
 	{
-		$validated = validate($request->all(), [
+		$validated = $request->validate([
 				'title' => ['required', 'string', 'max:100'],
-				'content' => ['required', 'string']
+				'content' => ['required', 'string', 'max:1000'],
+				'published_at' => ['nullable', 'string', 'date'],
+				'published' => ['nullable', 'boolean'],
 			]
 		);
 
-		dd($validated);
+		$post = Post::query()->findOrFail($postId);
+		$post->update([
+			'user_id' => User::query()->value('id'),
+			'title' => $validated['title'],
+			'content' => $validated['content'],
+			'published_at' => (new Carbon($validated['published_at']))->format('d.m.Y H:i:s'),
+			'published' => $validated['published'] ?? false,
+		]);
 
 		alert(__('Пост успешно обновлён!'));
 
-		return redirect()->back();
+		return view('user.posts.show', compact('post'));
 	}
 
 	public function delete(int $postId)

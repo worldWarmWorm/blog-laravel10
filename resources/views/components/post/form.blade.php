@@ -5,7 +5,7 @@
 		<x-label required>
 			{{ __('Название поста') }}
 		</x-label>
-		<x-input name="title" autofocus />
+		<x-input name="title" value="{{ $post?->title }}" autofocus />
 		<x-error name="title"/>
 	</x-form-item>
 
@@ -13,7 +13,7 @@
 		<x-label required>
 			{{ __('Содержание поста') }}
 		</x-label>
-		<x-trix name="content" value="{{ $post->content ?? '' }}" />
+		<x-trix name="content" value="{{ $post?->content }}" />
 		<x-error name="content"/>
 	</x-form-item>
 
@@ -21,7 +21,7 @@
 		<x-label>
 			{{ __('Дата публикации') }}
 		</x-label>
-		<x-input type="date" name="published_at" placeholder="Заполните дату публикации" />
+		<x-input type="date" name="published_at" value="{{ $post?->published_at->format('Y-m-d') }}" />
 		<x-error name="published_at"/>
 	</x-form-item>
 

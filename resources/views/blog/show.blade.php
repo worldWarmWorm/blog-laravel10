@@ -9,7 +9,7 @@
 				{{ __('Назад') }}
 			</a>
 		</x-slot>
-		{{ __($post->title) }}
+		{{ __($post->title) }} ({{ $post->published_at->format('d.m.Y H:i:s') }})
 	</x-title>
-	{!! $post->content !!}
+	{!! __($post->content) !!}
 @endsection
